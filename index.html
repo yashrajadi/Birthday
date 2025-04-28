@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Happy Birthday Aditi!</title>
+  <style>
+    /* Basic reset and universal settings */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Comic Sans MS', cursive, sans-serif;
+      background-color: #fce1f2;
+      color: #333;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      flex-direction: column;
+      animation: fadeIn 2s ease-in;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Fade-in effect */
+    @keyframes fadeIn {
+      0% { opacity: 0; }
+      100% { opacity: 1; }
+    }
+
+    /* Background Animation (floating clouds) */
+    .background {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('https://www.transparenttextures.com/patterns/zigzag.png');
+      background-size: 60px 60px;
+      animation: moveBackground 5s infinite linear;
+      z-index: -1;
+    }
+
+    @keyframes moveBackground {
+      0% { background-position: 0 0; }
+      100% { background-position: 60px 60px; }
+    }
+
+    /* Falling pink leaves animation */
+    .falling-leaf {
+      position: absolute;
+      top: -30px;
+      color: #ff66b2;
+      font-size: 25px;
+      animation: fall 6s linear infinite;
+    }
+
+    @keyframes fall {
+      0% {
+        top: -30px;
+        opacity: 1;
+      }
+      100% {
+        top: 100vh;
+        opacity: 0;
+      }
+    }
+
+    /* Leaf positions - randomly placed */
+    .leaf1 { left: 10%; animation-delay: 0s; }
+    .leaf2 { left: 20%; animation-delay: 1s; }
+    .leaf3 { left: 30%; animation-delay: 2s; }
+    .leaf4 { left: 50%; animation-delay: 1.5s; }
+    .leaf5 { left: 60%; animation-delay: 3s; }
+    .leaf6 { left: 70%; animation-delay: 4s; }
+
+    h1 {
+      font-size: 50px;
+      color: #ff66b2;
+      text-align: center;
+      text-shadow: 2px 2px 8px #ff3385;
+      animation: bounce 2s infinite;
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-20px); }
+    }
+
+    .timer {
+      font-size: 30px;
+      color: #ff3399;
+      margin-top: 20px;
+      padding: 20px;
+      background-color: #ffffff;
+      border-radius: 15px;
+      box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
+      animation: popIn 1s ease-out;
+    }
+
+    @keyframes popIn {
+      0% { transform: scale(0.8); opacity: 0; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+
+    .content {
+      max-width: 800px;
+      text-align: center;
+      margin-top: 40px;
+      line-height: 1.8;
+      font-size: 18px;
+      color: #666;
+    }
+
+    .content h2 {
+      color: #ff66b2;
+      font-size: 30px;
+      margin-bottom: 10px;
+    }
+
+    /* Surprise button and surprise section */
+    .surprise-button {
+      padding: 10px 20px;
+      font-size: 20px;
+      background-color: #ff66b2;
+      border: none;
+      border-radius: 20px;
+      color: white;
+      cursor: pointer;
+      margin-top: 40px;
+      box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease;
+    }
+
+    .surprise-button:hover {
+      transform: scale(1.1);
+      background-color: #ff3399;
+    }
+
+    .surprise-container {
+      display: none;
+      position: relative;
+      margin-top: 30px;
+      padding: 20px;
+      background-color: #fff;
+      border-radius: 10px;
+      box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
+      animation: revealSurprise 1s ease-in-out;
+    }
+
+    @keyframes revealSurprise {
+      0% { opacity: 0; transform: scale(0.5); }
+      100% { opacity: 1; transform: scale(1); }
+    }
+
+    /* Sayari Box */
+    .sayari-box {
+      display: none;
+      padding: 20px;
+      background-color: #ffccff;
+      border-radius: 10px;
+      border: 2px solid #ff66b2;
+      margin-top: 20px;
+      font-size: 20px;
+      color: #333;
+      box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
+      animation: revealSayari 1s ease-in-out;
+    }
+
+    @keyframes revealSayari {
+      0% { opacity: 0; transform: scale(0.5); }
+      100% { opacity: 1; transform: scale(1); }
+    }
+
+    .sayari-box p {
+      text-align: center;
+      font-style: italic;
+      color: #ff3399;
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- Background Animation (Floating effect) -->
+  <div class="background"></div>
+  <div class="falling-leaf leaf1">🍂</div>
+  <div class="falling-leaf leaf2">🍂</div>
+  <div class="falling-leaf leaf3">🍂</div>
+  <div class="falling-leaf leaf4">🍂</div>
+  <div class="falling-leaf leaf5">🍂</div>
+  <div class="falling-leaf leaf6">🍂</div>
+
+  <h1>Happy Birthday Aditi!</h1>
+
+  <div class="timer">
+    <p>Time until your birthday:</p>
+    <div id="countdown"></div>
+  </div>
+
+  <div class="content">
+    <h2>For You, Aditi</h2>
+    <p>
+      Even though we are not friends anymore, I wanted to take this moment to remind you of how special you are. Life is full of unexpected twists and turns, but it’s important to hold onto the good memories, the laughter, and the love. I hope you have a beautiful year ahead, filled with joy, adventure, and growth.
+    </p>
+    <p>
+      May you continue to shine brightly, no matter the distance between us. Happy Birthday, Aditi. 🌸
+    </p>
+    <i class="heart-icon">❤️</i>
+  </div>
+
+  <button class="surprise-button" onclick="revealSurprise()">Open Your First Surprise!</button>
+
+  <div class="surprise-container" id="surprise-container">
+    <p style="font-size: 40px;">Aditi, you are forever loved! 💖</p>
+    <button class="surprise-button" onclick="revealSayari()">Open Second Surprise!</button>
+  </div>
+
+  <div class="sayari-box" id="sayari-box">
+    <p>"Zindagi ke har mod pe, kabhi na kabhi khushiyan milengi. 
+      Tum jo chahoge, woh tumhara hoga. Bas apne sapno par bharosa rakho.
+      Duniya badalti hai, aur tumhara waqt bhi zaroor aayega!"</p>
+  </div>
+
+  <script>
+    // Countdown Timer
+    const countdownDate = new Date("May 9, 2025 00:00:00").getTime();
+
+    const countdownFunction = setInterval(function() {
+      let now = new Date().getTime();
+      let distance = countdownDate - now;
+
+      let days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      let hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      let minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      let seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      document.getElementById("countdown").innerHTML =
+        days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
+
+      if (distance < 0) {
+        clearInterval(countdownFunction);
+        document.getElementById("countdown").innerHTML = "Happy Birthday!";
+      }
+    }, 1000);
+
+    // Reveal first surprise
+    function revealSurprise() {
+      document.getElementById('surprise-container').style.display = 'block';
+    }
+
+    // Reveal second surprise (Sayari)
+    function revealSayari() {
+      document.getElementById('sayari-box').style.display = 'block';
+    }
+  </script>
+
+</body>
+</html>
